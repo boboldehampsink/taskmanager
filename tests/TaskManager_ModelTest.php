@@ -93,6 +93,7 @@ class TaskManager_ModelTest extends BaseTest
             'Pending' => array(TaskStatus::Pending, EntryModel::PENDING),
             'Error'   => array(TaskStatus::Error, EntryModel::EXPIRED),
             'Running' => array(TaskStatus::Running, EntryModel::LIVE),
+            'Unknown' => array('unknown', EntryModel::DISABLED),
         );
     }
 }
