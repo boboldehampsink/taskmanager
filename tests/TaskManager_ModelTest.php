@@ -34,6 +34,9 @@ class MigrationsHelperTest extends BaseTest
      */
     final public function testGetTitle()
     {
+        // Mock localization service
+        $this->setMockLocalizationService();
+
         // Set up model
         $model = new TaskManagerModel();
 
@@ -52,6 +55,9 @@ class MigrationsHelperTest extends BaseTest
      */
     final public function testGetStatus($taskStatus, $elementStatus)
     {
+        // Mock localization service
+        $this->setMockLocalizationService();
+
         // Set up model
         $model = new TaskManagerModel();
 
@@ -60,6 +66,20 @@ class MigrationsHelperTest extends BaseTest
 
         // Assert element status
         $this->assertSame($model->getStatus(), $elementStatus);
+    }
+
+    /**
+     * Mock localization service.
+     *
+     * @return LocalizationService
+     */
+    private function setMockLocalizationService()
+    {
+        $mock = $this->getMockBuilder('Craft\LocalizationService')
+                    ->disableOriginalConstructor()
+                    ->getMock();
+
+        $this->setComponent(craft(), 'i18n', $mock);
     }
 
     /**
