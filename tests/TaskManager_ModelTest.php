@@ -16,7 +16,7 @@ namespace Craft;
  * @coversDefaultClass Craft\TaskManagerModel
  * @covers ::<!public>
  */
-class MigrationsHelperTest extends BaseTest
+class TaskManager_ModelTest extends BaseTest
 {
     /**
      * {@inheritdoc}
