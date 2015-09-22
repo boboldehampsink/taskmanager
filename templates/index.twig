@@ -3,11 +3,11 @@
 {% set elementType = 'TaskManager' %}
 
 {% includeTranslations
+    "Are you sure you want to restart this task?",
+    "Task restarted",
     "Are you sure you want to delete this task?",
     "Task deleted."
 %}
 
-{% includeCss ".sidebar{display:none;}" %}
-{% includeCss ".content.has-sidebar{margin-left:0px !important}" %}
-
+{% includeCssResource "taskmanager/css/taskManager.css" %}
 {% includeJsResource "taskmanager/js/taskManager.js" %}
