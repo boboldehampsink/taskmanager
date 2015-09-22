@@ -15,5 +15,9 @@ phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/plugins/
 
 Changelog
 =================
+###0.2.0###
+ - Added the ability to restart a task
+ - Deleting a task is now more graceful
+
 ###0.1.0###
  - Initial release
