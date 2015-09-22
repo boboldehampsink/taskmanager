@@ -2,5 +2,12 @@
 {% set title = "Task Manager"|t %}
 {% set elementType = 'TaskManager' %}
 
+{% includeTranslations
+    "Are you sure you want to delete this task?",
+    "Task deleted."
+%}
+
 {% includeCss ".sidebar{display:none;}" %}
 {% includeCss ".content.has-sidebar{margin-left:0px !important}" %}
+
+{% includeJsResource "taskmanager/js/taskManager.js" %}

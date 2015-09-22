@@ -114,9 +114,7 @@ class TaskManagerElementType extends BaseElementType
     {
         // Show special actions
         if ($attribute == 'actions') {
-            $url = UrlHelper::getActionUrl('taskManager/deleteTask', array('taskId' => $element->id));
-
-            return '<a href="'.$url.'" class="delete icon" title="Delete" role="button"></a>';
+            return '<a href="javascript:void(0)" data-delete="'.$element->id.'" class="delete icon" title="Delete" role="button"></a>';
         }
 
         // Or format default
