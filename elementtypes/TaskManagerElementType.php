@@ -115,7 +115,7 @@ class TaskManagerElementType extends BaseElementType
         // Show special actions
         if ($attribute == 'actions') {
             return '<a href="javascript:void(0)" class="restart icon" title="'.Craft::t('Restart').'"> '
-                 .'<a href="javascript:void(0)" class="delete icon" title="'.Craft::t('Delete').'"></a>';
+                    .'<a href="javascript:void(0)" class="delete icon" title="'.Craft::t('Delete').'"></a>';
         }
 
         // Or format default
