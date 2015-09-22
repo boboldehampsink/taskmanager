@@ -114,7 +114,7 @@ class TaskManagerElementType extends BaseElementType
     {
         // Show special actions
         if ($attribute == 'actions') {
-            return '<a href="javascript:void(0)" data-delete="'.$element->id.'" class="delete icon" title="Delete" role="button"></a>';
+            return '<a href="javascript:void(0)" data-delete="' . $element->id . '" class="delete icon" title="Delete" role="button"></a>';
         }
 
         // Or format default
@@ -159,7 +159,7 @@ class TaskManagerElementType extends BaseElementType
 
         // Add search capabilities
         if ($criteria->search) {
-            $query->andWhere(DbHelper::parseParam('description', '*'.$criteria->search.'*', $query->params));
+            $query->andWhere(DbHelper::parseParam('description', '*' . $criteria->search . '*', $query->params));
             $criteria->search = null;
         }
     }
