@@ -6,11 +6,12 @@
  *
  */
 (function($) {
+  'use strict';
 
   /**
    * Delete button
    */
-  $('#content a[data-delete]').click(function() {
+  $('#content').on('click', 'a.delete', function(e) {
     e.preventDefault();
 
     // Make user confirm
@@ -18,10 +19,11 @@
 
       // Delete via tasks controller
       Craft.postActionRequest('tasks/deleteTask', {
-        taskId: $(this).data('delete'),
-      }, function() {
+        taskId: $(this).closest('tr').data('id'),
+      }, $.proxy(function() {
         Craft.cp.displayNotice(Craft.t('Task deleted.'));
-      });
+        $(this).closest('tr').remove();
+      }, this));
     }
   });
 
