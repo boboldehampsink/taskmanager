@@ -4,7 +4,14 @@ Task Manager plugin for Craft CMS [![Build Status](https://travis-ci.org/bobolde
 Adds a "Task Manager" section to your CP to easily cancel or delete Craft Tasks.
 
 __Important__  
- - The plugin's folder should be named "taskmanager"  
+ - The plugin's folder should be named "taskmanager"
+
+Features
+=================
+ - View detail task info
+ - Cancel running tasks
+ - Rerun running or failed tasks
+ - If you set up a cronjob to run /actions/taskManager/rerunAllFailedTasks, you can automatically rerun failed tasks
 
 Development
 =================
