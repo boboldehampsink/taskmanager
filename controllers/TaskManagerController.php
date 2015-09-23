@@ -16,7 +16,7 @@ class TaskManagerController extends BaseController
     /**
      * Allow anonymous access (for a cronjob perhaps).
      *
-     * @return [type] [description]
+     * @var bool
      */
     public $allowAnonymous = true;
 
