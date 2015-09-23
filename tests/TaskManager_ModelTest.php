@@ -24,7 +24,7 @@ class TaskManager_ModelTest extends BaseTest
     public static function setUpBeforeClass()
     {
         parent::setUpBeforeClass();
-        require_once __DIR__.'/../models/TaskManagerModel.php';
+        require_once __DIR__ . '/../models/TaskManagerModel.php';
     }
 
     /**
