@@ -76,12 +76,17 @@ class TaskManagerElementType extends BaseElementType
      */
     public function getSources($context = null)
     {
-        return array(
+        $sources = array(
             '*' => array(
                 'label'    => Craft::t('All tasks'),
                 'criteria' => array(),
             ),
         );
+
+        // Allow plugins to modify the sources
+        craft()->plugins->call('modifyTaskManagerSources', array(&$sources, $context));
+
+        return $sources;
     }
 
     /**
@@ -93,13 +98,18 @@ class TaskManagerElementType extends BaseElementType
      */
     public function defineTableAttributes($source = null)
     {
-        return array(
+        $attributes = array(
             'description' => Craft::t('Description'),
             'dateCreated' => Craft::t('Created'),
             'currentStep' => Craft::t('Current step'),
             'totalSteps'  => Craft::t('Total steps'),
             'actions'     => '',
         );
+
+        // Allow plugins to modify the attributes
+        craft()->plugins->call('modifyTaskManagerTableAttributes', array(&$attributes, $source));
+
+        return $attributes;
     }
 
     /**
@@ -112,10 +122,17 @@ class TaskManagerElementType extends BaseElementType
      */
     public function getTableAttributeHtml(BaseElementModel $element, $attribute)
     {
+        // First give plugins a chance to set this
+        $pluginAttributeHtml = craft()->plugins->callFirst('getTaskManagerTableAttributeHtml', array($element, $attribute), true);
+
+        if ($pluginAttributeHtml !== null) {
+            return $pluginAttributeHtml;
+        }
+
         // Show special actions
         if ($attribute == 'actions') {
-            return '<a href="javascript:void(0)" class="restart icon" title="' . Craft::t('Restart') . '"> '
-                    .'<a href="javascript:void(0)" class="delete icon" title="' . Craft::t('Delete') . '"></a>';
+            return '<a href="javascript:void(0)" class="restart icon" title="'.Craft::t('Restart').'"> '
+                    .'<a href="javascript:void(0)" class="delete icon" title="'.Craft::t('Delete').'"></a>';
         }
 
         // Or format default
@@ -131,9 +148,14 @@ class TaskManagerElementType extends BaseElementType
      */
     public function defineSortableAttributes($source = null)
     {
-        return array(
+        $attributes = array(
             'dateCreated' => Craft::t('Created'),
         );
+
+        // Allow plugins to modify the attributes
+        craft()->plugins->call('modifyTaskManagerSortableAttributes', array(&$attributes));
+
+        return $attributes;
     }
 
     /**
@@ -160,7 +182,7 @@ class TaskManagerElementType extends BaseElementType
 
         // Add search capabilities
         if ($criteria->search) {
-            $query->andWhere(DbHelper::parseParam('description', '*' . $criteria->search . '*', $query->params));
+            $query->andWhere(DbHelper::parseParam('description', '*'.$criteria->search.'*', $query->params));
             $criteria->search = null;
         }
     }
