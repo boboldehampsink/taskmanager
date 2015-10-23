@@ -117,15 +117,15 @@ class TaskManagerElementType extends BaseElementType
 
         $restartAction = craft()->elements->getAction('TaskManager_Restart');
         $restartAction->setParams(array(
-            'confirmationMessage' => Craft::t('Are you sure you want to restart the selected tasks?'),
-            'successMessage' => Craft::t('Tasks restarted.'),
+            'confirmationMessage' => Craft::t('Are you sure you want to restart the selected task(s)?'),
+            'successMessage' => Craft::t('Task(s) restarted'),
         ));
         $actions[] = $restartAction;
 
         $deleteAction = craft()->elements->getAction('TaskManager_Delete');
         $deleteAction->setParams(array(
-            'confirmationMessage' => Craft::t('Are you sure you want to delete the selected tasks?'),
-            'successMessage' => Craft::t('Tasks deleted.'),
+            'confirmationMessage' => Craft::t('Are you sure you want to delete the selected task(s)?'),
+            'successMessage' => Craft::t('Task(s) deleted'),
         ));
         $actions[] = $deleteAction;
 

@@ -19,9 +19,9 @@ return array(
     'Current step'          => 'Huidige stap',
     'Total steps'           => 'Totaal aantal stappen',
     'Restart task(s)'       => 'Herstart taak(en)',
-    'Are you sure you want to restart this task?' => 'Weet je zeker dat je deze taak wilt herstarten?',
+    'Are you sure you want to restart the selected task(s)?' => 'Weet je zeker dat je de geselecteerde tak(en) wilt herstarten?',
     'Task(s) restarted'     => 'Taak(en) herstart.',
     'Delete task(s)'        => 'Verwijder taak(en)',
-    'Are you sure you want to delete this task?' => 'Weet je zeker dat je deze taak wilt verwijderen?',
+    'Are you sure you want to delete the selected task(s)?' => 'Weet je zeker dat je de geselecteerde tak(en) wilt verwijderen?',
     'Task(s) deleted'       => 'Taak(en) verwijderd.',
 );
