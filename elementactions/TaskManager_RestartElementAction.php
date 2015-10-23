@@ -20,11 +20,11 @@ class TaskManager_RestartElementAction extends BaseElementAction
      */
     public function getName()
     {
-        return Craft::t('Restart tasks');
+        return Craft::t('Restart task(s)');
     }
 
     /**
-     * @inheritDoc IElementAction::performAction()
+     * Restart given tasks.
      *
      * @param ElementCriteriaModel $criteria
      *
@@ -32,13 +32,11 @@ class TaskManager_RestartElementAction extends BaseElementAction
      */
     public function performAction(ElementCriteriaModel $criteria)
     {
-        // Restart given tasks
-        $taskIds = $criteria->ids();
-        foreach ($taskIds as $taskId) {
+        foreach ($criteria->id as $taskId) {
             craft()->tasks->rerunTaskById($taskId);
         }
 
-        $this->setMessage(Craft::t('Tasks restarted.'));
+        $this->setMessage(Craft::t('Task(s) restarted.'));
 
         return true;
     }

@@ -20,11 +20,11 @@ class TaskManager_DeleteElementAction extends BaseElementAction
      */
     public function getName()
     {
-        return Craft::t('Delete tasks');
+        return Craft::t('Delete task(s)');
     }
 
     /**
-     * @inheritDoc IElementAction::performAction()
+     * Delete given task.
      *
      * @param ElementCriteriaModel $criteria
      *
@@ -32,13 +32,11 @@ class TaskManager_DeleteElementAction extends BaseElementAction
      */
     public function performAction(ElementCriteriaModel $criteria)
     {
-        // Restart given tasks
-        $taskIds = $criteria->ids();
-        foreach ($taskIds as $taskId) {
+        foreach ($criteria->id as $taskId) {
             craft()->tasks->deleteTaskById($taskId);
         }
 
-        $this->setMessage(Craft::t('Tasks deleted.'));
+        $this->setMessage(Craft::t('Task(s) deleted.'));
 
         return true;
     }
