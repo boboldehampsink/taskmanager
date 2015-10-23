@@ -113,6 +113,8 @@ class TaskManagerElementType extends BaseElementType
      */
     public function getAvailableActions($source = null)
     {
+        $actions = array();
+
         $restartAction = craft()->elements->getAction('TaskManager_Restart');
         $restartAction->setParams(array(
             'confirmationMessage' => Craft::t('Are you sure you want to restart the selected tasks?'),
