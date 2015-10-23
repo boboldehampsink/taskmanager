@@ -122,7 +122,7 @@ class TaskManagerElementType extends BaseElementType
         ));
         $actions[] = $restartAction;
 
-        $deleteAction = craft()->elements->getAction('Delete');
+        $deleteAction = craft()->elements->getAction('TaskManager_Delete');
         $deleteAction->setParams(array(
             'confirmationMessage' => Craft::t('Are you sure you want to delete the selected tasks?'),
             'successMessage' => Craft::t('Tasks deleted.'),
