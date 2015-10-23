@@ -18,6 +18,7 @@ return array(
     'Created'               => 'Aangemaakt',
     'Current step'          => 'Huidige stap',
     'Total steps'           => 'Totaal aantal stappen',
+    'User'                  => 'Gebruiker',
     'Restart task(s)'       => 'Herstart taken',
     'Are you sure you want to restart the selected task(s)?' => 'Weet je zeker dat je de geselecteerde taken wilt herstarten?',
     'Task(s) restarted'     => 'Taken herstart.',
