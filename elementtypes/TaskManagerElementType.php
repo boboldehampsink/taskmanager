@@ -79,14 +79,55 @@ class TaskManagerElementType extends BaseElementType
         $sources = array(
             '*' => array(
                 'label'    => Craft::t('All tasks'),
-                'criteria' => array(),
+                'criteria' => array('editable' => true),
             ),
         );
+
+        // Get sources by type
+        $results = craft()->db->createCommand()
+            ->select('id, type')
+            ->from('tasks')
+            ->order('root asc, lft asc')
+            ->group('type')
+            ->queryAll();
+        foreach ($results as $result) {
+            $sources['type:'.$result['type']] = array(
+                'label' => $result['type'],
+                'data' => array('id' => $result['id']),
+                'criteria' => array('type' => $result['type'], 'editable' => true),
+            );
+        }
 
         // Allow plugins to modify the sources
         craft()->plugins->call('modifyTaskManagerSources', array(&$sources, $context));
 
         return $sources;
+    }
+
+    /**
+     * @inheritDoc IElementType::getAvailableActions()
+     *
+     * @param string|null $source
+     *
+     * @return array|null
+     */
+    public function getAvailableActions($source = null)
+    {
+        $restartAction = craft()->elements->getAction('TaskManager_Restart');
+        $restartAction->setParams(array(
+            'confirmationMessage' => Craft::t('Are you sure you want to restart the selected tasks?'),
+            'successMessage' => Craft::t('Tasks restarted.'),
+        ));
+        $actions[] = $restartAction;
+
+        $deleteAction = craft()->elements->getAction('Delete');
+        $deleteAction->setParams(array(
+            'confirmationMessage' => Craft::t('Are you sure you want to delete the selected tasks?'),
+            'successMessage' => Craft::t('Tasks deleted.'),
+        ));
+        $actions[] = $deleteAction;
+
+        return $actions;
     }
 
     /**
@@ -103,7 +144,6 @@ class TaskManagerElementType extends BaseElementType
             'dateCreated' => Craft::t('Created'),
             'currentStep' => Craft::t('Current step'),
             'totalSteps'  => Craft::t('Total steps'),
-            'actions'     => '',
         );
 
         // Allow plugins to modify the attributes
@@ -127,12 +167,6 @@ class TaskManagerElementType extends BaseElementType
 
         if ($pluginAttributeHtml !== null) {
             return $pluginAttributeHtml;
-        }
-
-        // Show special actions
-        if ($attribute == 'actions') {
-            return '<a href="javascript:void(0)" class="restart icon" title="'.Craft::t('Restart').'"> '
-                    .'<a href="javascript:void(0)" class="delete icon" title="'.Craft::t('Delete').'"></a>';
         }
 
         // Or format default
@@ -159,6 +193,18 @@ class TaskManagerElementType extends BaseElementType
     }
 
     /**
+     * Defines any custom element criteria attributes for this element type.
+     *
+     * @return array
+     */
+    public function defineCriteriaAttributes()
+    {
+        return array(
+            'type'   => AttributeType::String,
+        );
+    }
+
+    /**
      * Modifies an element query targeting elements of this type.
      *
      * @param DbCommand            $query
@@ -170,8 +216,8 @@ class TaskManagerElementType extends BaseElementType
     {
         // Default query
         $query
-            ->select('tasks.id, tasks.currentStep, tasks.totalSteps, tasks.status, tasks.type, tasks.description, tasks.dateCreated')
-            ->from('tasks tasks');
+            ->select('id, currentStep, totalSteps, status, type, description, dateCreated')
+            ->from('tasks elements');
 
         // Reset default element type query parts
         $query->setJoin('');
@@ -179,6 +225,10 @@ class TaskManagerElementType extends BaseElementType
         $query->setGroup('');
         unset($query->params[':locale']);
         unset($query->params[':elementsid1']);
+
+        if ($criteria->type) {
+            $query->andWhere(DbHelper::parseParam('type', $criteria->type, $query->params));
+        }
 
         // Add search capabilities
         if ($criteria->search) {
