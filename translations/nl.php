@@ -12,15 +12,16 @@
  * @link      http://github.com/boboldehampsink
  */
 return array(
-    'Task Manager'  => 'Taakbeheer',
-    'Description'   => 'Omschrijving',
-    'Created'       => 'Aangemaakt',
-    'Current step'  => 'Huidige stap',
-    'Total steps'   => 'Totaal aantal stappen',
-    'Restart'       => 'Herstart',
+    'Task Manager'          => 'Taakbeheer',
+    'All tasks'             => 'Alle taken',
+    'Description'           => 'Omschrijving',
+    'Created'               => 'Aangemaakt',
+    'Current step'          => 'Huidige stap',
+    'Total steps'           => 'Totaal aantal stappen',
+    'Restart task(s)'       => 'Herstart taak(en)',
     'Are you sure you want to restart this task?' => 'Weet je zeker dat je deze taak wilt herstarten?',
-    'Task restarted.' => 'Taak herstart.',
-    'Delete'        => 'Verwijder',
+    'Task(s) restarted'     => 'Taak(en) herstart.',
+    'Delete task(s)'        => 'Verwijder taak(en)',
     'Are you sure you want to delete this task?' => 'Weet je zeker dat je deze taak wilt verwijderen?',
-    'Task deleted.' => 'Taak verwijderd.',
+    'Task(s) deleted'       => 'Taak(en) verwijderd.',
 );
