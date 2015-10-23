@@ -129,6 +129,13 @@ class TaskManagerElementType extends BaseElementType
         ));
         $actions[] = $deleteAction;
 
+        // Allow plugins to add additional actions
+        $allPluginActions = craft()->plugins->call('addTaskManagerActions', array($source), true);
+
+        foreach ($allPluginActions as $pluginActions) {
+            $actions = array_merge($actions, $pluginActions);
+        }
+
         return $actions;
     }
 
