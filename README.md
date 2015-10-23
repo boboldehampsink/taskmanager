@@ -22,8 +22,15 @@ phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/plugins/
 
 Changelog
 =================
-###0.2.1###
+###0.3.0###
+ - Added sources by type
+ - Replaced action buttons by element actions
  - Added endpoint for rerunning all failed tasks
+ - Added "modifyTaskManagerSources" hook
+ - Added "addTaskManagerActions" hook
+ - Added "modifyTaskManagerTableAttributes" hook
+ - Added "getTaskManagerTableAttributeHtml" hook
+ - Added "modifyTaskManagerSortableAttributes"
 
 ###0.2.0###
  - Added the ability to restart a task
