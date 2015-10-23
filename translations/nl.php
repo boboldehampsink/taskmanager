@@ -24,4 +24,6 @@ return array(
     'Delete task(s)'        => 'Verwijder taak(en)',
     'Are you sure you want to delete the selected task(s)?' => 'Weet je zeker dat je de geselecteerde tak(en) wilt verwijderen?',
     'Task(s) deleted'       => 'Taak(en) verwijderd.',
+    'Error'                 => 'Fout',
+    'Running'               => 'Lopend',
 );
