@@ -225,7 +225,7 @@ class TaskManagerElementType extends BaseElementType
     {
         // Default query
         $query
-            ->select('id, currentStep, totalSteps, status, type, description, dateCreated')
+            ->select('id, currentStep, totalSteps, status, type, description, settings, dateCreated')
             ->from('tasks elements');
 
         // Reset default element type query parts

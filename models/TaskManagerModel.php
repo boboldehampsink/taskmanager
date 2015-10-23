@@ -33,6 +33,7 @@ class TaskManagerModel extends BaseElementModel
             'parentId'    => AttributeType::Mixed,
             'totalSteps'  => AttributeType::Number,
             'currentStep' => AttributeType::Number,
+            'settings'    => AttributeType::Mixed,
             'status'      => array(AttributeType::Enum, 'values' => array(TaskStatus::Pending, TaskStatus::Error, TaskStatus::Running), 'default' => TaskStatus::Pending),
         ));
     }
