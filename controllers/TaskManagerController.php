@@ -26,11 +26,18 @@ class TaskManagerController extends BaseController
     public function actionRerunAllFailedTasks()
     {
         // Get all failed tasks
-        $tasks = craft()->db->createCommand()
+        $query = craft()->db->createCommand()
             ->select('id')
             ->from('tasks')
-            ->where(array('and', 'lft = 1', 'status = :status'), array(':status' => TaskStatus::Error))
-            ->queryAll();
+            ->where(array('and', 'lft = 1', 'status = :status'), array(':status' => TaskStatus::Error));
+
+        // Get all hanging? tasks
+        if ($timeout = craft()->config->get('taskTimeout')) {
+            $query->orWhere(array('and', 'lft = 1', 'dateCreated < (NOW() - INTERVAL :seconds SECOND)'), array(':seconds' => $timeout));
+        }
+
+        // Get all
+        $tasks = $query->queryAll();
 
         // Loop through failed tasks
         foreach ($tasks as $task) {
