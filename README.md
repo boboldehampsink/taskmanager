@@ -26,6 +26,7 @@ Changelog
  - Added sources by type
  - Replaced action buttons by element actions
  - Added endpoint for rerunning all failed tasks
+ - Added the ability to restart hanging tasks after a given timeout
  - Added "modifyTaskManagerSources" hook
  - Added "addTaskManagerActions" hook
  - Added "modifyTaskManagerTableAttributes" hook
