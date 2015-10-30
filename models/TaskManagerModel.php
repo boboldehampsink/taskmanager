@@ -29,6 +29,7 @@ class TaskManagerModel extends BaseElementModel
     {
         return array_merge(parent::defineAttributes(), array(
             'level'       => AttributeType::Number,
+            'type'        => AttributeType::String,
             'description' => AttributeType::String,
             'parentId'    => AttributeType::Mixed,
             'totalSteps'  => AttributeType::Number,
