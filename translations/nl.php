@@ -27,4 +27,5 @@ return array(
     'Task(s) deleted'       => 'Taken verwijderd.',
     'Error'                 => 'Fout',
     'Running'               => 'Lopend',
+    'No description'        => 'Geen omschrijving',
 );

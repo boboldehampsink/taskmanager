@@ -43,7 +43,7 @@ class TaskManagerModel extends BaseElementModel
      */
     public function getTitle()
     {
-        return $this->description;
+        return !empty($this->description) ? $this->description : Craft::t('No description');
     }
 
     /**
