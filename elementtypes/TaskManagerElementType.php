@@ -149,8 +149,8 @@ class TaskManagerElementType extends BaseElementType
     public function defineTableAttributes($source = null)
     {
         $attributes = array(
-            'type'        => Craft::t('Type'),
             'description' => Craft::t('Description'),
+            'type'        => Craft::t('Type'),
             'dateCreated' => Craft::t('Created'),
             'currentStep' => Craft::t('Current step'),
             'totalSteps'  => Craft::t('Total steps'),
