@@ -149,6 +149,7 @@ class TaskManagerElementType extends BaseElementType
     public function defineTableAttributes($source = null)
     {
         $attributes = array(
+            'type'        => Craft::t('Type'),
             'description' => Craft::t('Description'),
             'dateCreated' => Craft::t('Created'),
             'currentStep' => Craft::t('Current step'),
@@ -192,6 +193,7 @@ class TaskManagerElementType extends BaseElementType
     public function defineSortableAttributes($source = null)
     {
         $attributes = array(
+            'type'        => Craft::t('Type'),
             'dateCreated' => Craft::t('Created'),
         );
 
@@ -210,6 +212,7 @@ class TaskManagerElementType extends BaseElementType
     {
         return array(
             'type'   => AttributeType::String,
+            'dateCreated' => AttributeType::DateTime,
         );
     }
 
