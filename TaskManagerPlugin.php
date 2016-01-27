@@ -24,6 +24,16 @@ class TaskManagerPlugin extends BasePlugin
     }
 
     /**
+     * Get plugin description.
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return Craft::t('Adds a "Task Manager" section to your CP to easily cancel or delete Craft Tasks.');
+    }
+
+    /**
      * Get plugin version.
      *
      * @return string
@@ -50,7 +60,17 @@ class TaskManagerPlugin extends BasePlugin
      */
     public function getDeveloperUrl()
     {
-        return 'http://github.com/boboldehampsink';
+        return 'https://github.com/boboldehampsink';
+    }
+
+    /**
+     * Get plugin documentation url.
+     *
+     * @return string
+     */
+    public function getDocumentationUrl()
+    {
+        return 'https://github.com/boboldehampsink/taskmanager';
     }
 
     /**
