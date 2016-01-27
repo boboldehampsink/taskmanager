@@ -156,12 +156,29 @@ class TaskManagerElementType extends BaseElementType
 
         // Allow plugins to modify the attributes
         $pluginAttributes = craft()->plugins->call('defineAdditionalTaskManagerTableAttributes', array(), true);
-
         foreach ($pluginAttributes as $thisPluginAttributes) {
             $attributes = array_merge($attributes, $thisPluginAttributes);
         }
 
         return $attributes;
+    }
+
+    /**
+     * @inheritDoc IElementType::getDefaultTableAttributes()
+     *
+     * @param string|null $source
+     *
+     * @return array
+     */
+    public function getDefaultTableAttributes($source = null)
+    {
+        return array(
+            'description',
+            'type',
+            'dateCreated',
+            'currentStep',
+            'totalSteps',
+        );
     }
 
     /**
