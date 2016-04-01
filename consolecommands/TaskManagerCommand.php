@@ -55,6 +55,9 @@ class TaskManagerCommand extends BaseCommand
             // Make sure tasks aren't already running
             if (!craft()->tasks->isTaskRunning()) {
 
+                // Reset next pending tasks cache
+                $this->resetCraftNextPendingTasksCache();
+
                 // Is there a pending task?
                 if (craft()->tasks->getNextPendingTask()) {
 
@@ -70,5 +73,19 @@ class TaskManagerCommand extends BaseCommand
             // Sleep a little
             sleep(10);
         }
+    }
+
+    /**
+     * Reset craft next pending task cache using reflection.
+     *
+     * @param TasksService $service
+     */
+    private function resetCraftNextPendingTasksCache()
+    {
+        $obj = craft()->tasks;
+        $refObject = new \ReflectionObject($obj);
+        $refProperty = $refObject->getProperty('_nextPendingTask');
+        $refProperty->setAccessible(true);
+        $refProperty->setValue($obj, null);
     }
 }
