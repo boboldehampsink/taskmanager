@@ -77,8 +77,6 @@ class TaskManagerCommand extends BaseCommand
 
     /**
      * Reset craft next pending task cache using reflection.
-     *
-     * @param TasksService $service
      */
     private function resetCraftNextPendingTasksCache()
     {
