@@ -12,6 +12,19 @@ Features
  - Cancel running tasks
  - Rerun running or failed tasks
  - If you set up a cronjob to run /actions/taskManager/rerunAllFailedTasks, you can automatically rerun failed tasks
+ - Comes with two console commands, one to run pending tasks and one to watch for pending tasks and run them.
+
+To run pending tasks just run
+
+```
+./craft/app/etc/console/yiic taskmanager run
+```
+
+To watch for pending tasks and them run them, run
+
+```
+./craft/app/etc/console/yiic taskmanager watch
+```
 
 Development
 =================
@@ -22,6 +35,9 @@ phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/plugins/
 
 Changelog
 =================
+###0.4.0###
+ - Added the ability to run and watch for tasks via the command line.
+
 ###0.3.1###
  - Updated the plugin for Craft 2.5
  - The hook "modifyTaskManagerAttributes" is now "defineAdditionalTaskManagerTableAttributes"
