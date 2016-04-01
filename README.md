@@ -22,6 +22,11 @@ phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/plugins/
 
 Changelog
 =================
+###0.3.1###
+ - Updated the plugin for Craft 2.5
+ - The hook "modifyTaskManagerAttributes" is now "defineAdditionalTaskManagerTableAttributes"
+ - Added description and documentation url
+
 ###0.3.0###
  - Added sources by type
  - Replaced action buttons by element actions

@@ -140,13 +140,11 @@ class TaskManagerElementType extends BaseElementType
     }
 
     /**
-     * Returns the attributes that can be shown/sorted by in table views.
-     *
-     * @param string|null $source
+     * @inheritDoc IElementType::defineAvailableTableAttributes()
      *
      * @return array
      */
-    public function defineTableAttributes($source = null)
+    public function defineAvailableTableAttributes()
     {
         $attributes = array(
             'description' => Craft::t('Description'),
@@ -157,9 +155,30 @@ class TaskManagerElementType extends BaseElementType
         );
 
         // Allow plugins to modify the attributes
-        craft()->plugins->call('modifyTaskManagerTableAttributes', array(&$attributes, $source));
+        $pluginAttributes = craft()->plugins->call('defineAdditionalTaskManagerTableAttributes', array(), true);
+        foreach ($pluginAttributes as $thisPluginAttributes) {
+            $attributes = array_merge($attributes, $thisPluginAttributes);
+        }
 
         return $attributes;
+    }
+
+    /**
+     * @inheritDoc IElementType::getDefaultTableAttributes()
+     *
+     * @param string|null $source
+     *
+     * @return array
+     */
+    public function getDefaultTableAttributes($source = null)
+    {
+        return array(
+            'description',
+            'type',
+            'dateCreated',
+            'currentStep',
+            'totalSteps',
+        );
     }
 
     /**

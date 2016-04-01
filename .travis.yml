@@ -35,6 +35,9 @@ before_script:
   - mkdir craft/storage
   - mkdir -p craft/plugins/taskmanager
   - for item in *; do if [[ ! "$item" == "craft" ]]; then mv $item craft/plugins/taskmanager; fi; done
+  - cd craft/app
+  - composer require mockery/mockery
+  - cd ../..
 
 # execute tests
 script: phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/plugins/taskmanager/phpunit.xml.dist --coverage-clover coverage.clover craft/plugins/taskmanager/tests
