@@ -35,6 +35,9 @@ phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/plugins/
 
 Changelog
 =================
+###0.4.1###
+ - Added the ability to control the watch interval via the `taskInterval` config setting
+
 ###0.4.0###
  - Added the ability to run and watch for tasks via the command line.
 
