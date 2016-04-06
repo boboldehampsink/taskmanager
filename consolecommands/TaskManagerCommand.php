@@ -22,24 +22,10 @@ class TaskManagerCommand extends BaseCommand
     {
         Craft::log(Craft::t('Running new tasks.'));
 
-        // Make sure tasks aren't already running
-        if (!craft()->tasks->isTaskRunning()) {
+        // Start running tasks
+        craft()->tasks->runPendingTasks();
 
-            // Is there a pending task?
-            if (craft()->tasks->getNextPendingTask()) {
-
-                // Start running tasks
-                craft()->tasks->runPendingTasks();
-
-                return 1;
-            } else {
-                Craft::log(Craft::t('No pending tasks found.'));
-            }
-        } else {
-            Craft::log(Craft::t('Tasks are already running.'));
-        }
-
-        return 0;
+        return 1;
     }
 
     /**
@@ -52,26 +38,14 @@ class TaskManagerCommand extends BaseCommand
         // Keep on checking for pending tasks
         while (true) {
 
-            // Make sure tasks aren't already running
-            if (!craft()->tasks->isTaskRunning()) {
+            // Reset next pending tasks cache
+            $this->resetCraftNextPendingTasksCache();
 
-                // Reset next pending tasks cache
-                $this->resetCraftNextPendingTasksCache();
-
-                // Is there a pending task?
-                if (craft()->tasks->getNextPendingTask()) {
-
-                    // Start running tasks
-                    craft()->tasks->runPendingTasks();
-                } else {
-                    Craft::log(Craft::t('No pending tasks found.'));
-                }
-            } else {
-                Craft::log(Craft::t('Tasks are already running, skipping iteration.'));
-            }
+            // Start running tasks
+            craft()->tasks->runPendingTasks();
 
             // Sleep a little
-            sleep(10);
+            sleep(craft()->config->get('taskInterval'));
         }
     }
 
