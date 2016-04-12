@@ -35,6 +35,9 @@ phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/plugins/
 
 Changelog
 =================
+###0.4.2###
+ - Fixed bug with reading default config values
+
 ###0.4.1###
  - Added the ability to control the watch interval via the `taskInterval` config setting
 

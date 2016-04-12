@@ -45,7 +45,7 @@ class TaskManagerCommand extends BaseCommand
             craft()->tasks->runPendingTasks();
 
             // Sleep a little
-            sleep(craft()->config->get('taskInterval'));
+            sleep(craft()->config->get('taskInterval', 'taskManager'));
         }
     }
 
