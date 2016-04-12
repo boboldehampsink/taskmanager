@@ -32,7 +32,7 @@ class TaskManagerController extends BaseController
             ->where(array('and', 'lft = 1', 'status = :status'), array(':status' => TaskStatus::Error));
 
         // Get all hanging? tasks
-        if ($timeout = craft()->config->get('taskTimeout')) {
+        if ($timeout = craft()->config->get('taskTimeout', 'taskManager')) {
             $query->orWhere(array('and', 'lft = 1', 'dateCreated < (NOW() - INTERVAL :seconds SECOND)'), array(':seconds' => $timeout));
         }
 
