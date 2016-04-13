@@ -1,7 +1,5 @@
 <?php
 
-namespace Craft;
-
 /**
  * Task Manager.
  *
