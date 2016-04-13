@@ -38,11 +38,17 @@ class TaskManagerCommand extends BaseCommand
         // Keep on checking for pending tasks
         while (true) {
 
+            // Open db connection, if closed
+            craft()->db->setActive(true);
+
             // Reset next pending tasks cache
             $this->resetCraftNextPendingTasksCache();
 
             // Start running tasks
             craft()->tasks->runPendingTasks();
+
+            // Close db connection, if open
+            craft()->db->setActive(false);
 
             // Sleep a little
             sleep(craft()->config->get('taskInterval', 'taskManager'));
