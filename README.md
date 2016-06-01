@@ -13,6 +13,7 @@ Features
  - Rerun running or failed tasks
  - If you set up a cronjob to run /actions/taskManager/rerunAllFailedTasks, you can automatically rerun failed tasks
  - Comes with two console commands, one to run pending tasks and one to watch for pending tasks and run them.
+ - Has an endpoint for Hirefire, see http://support.hirefire.io/help/kb/guides/any-programming-language
 
 To run pending tasks just run
 
