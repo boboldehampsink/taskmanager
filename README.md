@@ -36,6 +36,7 @@ phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/plugins/
 Changelog
 =================
 ###0.4.3###
+ - Added the ability to get pending tasks in Hirefire.io format
  - Recycle db connection
 
 ###0.4.2###

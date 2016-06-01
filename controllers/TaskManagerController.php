@@ -21,6 +21,17 @@ class TaskManagerController extends BaseController
     public $allowAnonymous = true;
 
     /**
+     * Get pending tasks in Hirefire.io format
+     */
+    public function actionGetPendingTasks()
+    {
+        $this->returnJson(array(
+            'name' => craft()->config->get('taskWorker', 'taskManager'),
+            'quantity' => craft()->tasks->getTotalTasks(),
+        ));
+    }
+
+    /**
      * Rerun all failed tasks.
      */
     public function actionRerunAllFailedTasks()
