@@ -82,4 +82,16 @@ class TaskManagerPlugin extends BasePlugin
     {
         return true;
     }
+
+    /**
+     * Register hirefire endpoint
+     *
+     * @return array
+     */
+    public function registerSiteRoutes()
+    {
+        return array(
+            'hirefire/(?P<token>(.*?)/info' => array('action' => 'taskManager/getPendingTasks'),
+        );
+    }
 }

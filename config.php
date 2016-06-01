@@ -17,6 +17,9 @@ return array(
     // At what interval should the watcher watch for new tasks? (in seconds)
     'taskInterval' => 10,
 
+    // Hirefire.io token
+    'hirefireToken' => getenv('HIREFIRE_TOKEN'),
+
     // Name of the task worker you're using (if using Heroku + Hirefire.io)
-    'taskWorker' => 'worker',
+    'hirefireWorker' => 'worker',
 );

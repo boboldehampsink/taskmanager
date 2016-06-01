@@ -22,13 +22,23 @@ class TaskManagerController extends BaseController
 
     /**
      * Get pending tasks in Hirefire.io format
+     *
+     * @param array $variables
+     *
+     * @throws HttpException
      */
-    public function actionGetPendingTasks()
+    public function actionGetPendingTasks(array $variables = array())
     {
-        $this->returnJson(array(
-            'name' => craft()->config->get('taskWorker', 'taskManager'),
+        // Verify hirefire token
+        if ($variables['token'] != craft()->config->get('hirefireToken', 'taskManager')) {
+            throw new HttpException(400, Craft::t('Invalid Hirefire token.'));
+        }
+
+        // Return pending tasks for worker
+        $this->returnJson(array(array(
+            'name' => craft()->config->get('hirefireWorker', 'taskManager'),
             'quantity' => craft()->tasks->getTotalTasks(),
-        ));
+        )));
     }
 
     /**
