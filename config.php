@@ -1,7 +1,5 @@
 <?php
 
-namespace Craft;
-
 /**
  * Task Manager.
  *
@@ -17,5 +15,11 @@ return array(
     'taskTimeout' => 0,
 
     // At what interval should the watcher watch for new tasks? (in seconds)
-    'taskInterval' => 10
+    'taskInterval' => 10,
+
+    // Hirefire.io token
+    'hirefireToken' => getenv('HIREFIRE_TOKEN'),
+
+    // Name of the task worker you're using (if using Heroku + Hirefire.io)
+    'hirefireWorker' => 'worker',
 );

@@ -40,7 +40,7 @@ class TaskManagerPlugin extends BasePlugin
      */
     public function getVersion()
     {
-        return '0.4.2';
+        return '0.4.3';
     }
 
     /**
@@ -81,5 +81,17 @@ class TaskManagerPlugin extends BasePlugin
     public function hasCpSection()
     {
         return true;
+    }
+
+    /**
+     * Register hirefire endpoint
+     *
+     * @return array
+     */
+    public function registerSiteRoutes()
+    {
+        return array(
+            'hirefire/(?P<token>(.*?))/info' => array('action' => 'taskManager/getPendingTasks'),
+        );
     }
 }
