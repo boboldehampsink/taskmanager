@@ -27,6 +27,25 @@ class TaskManagerCommand extends BaseCommand
 
         return 1;
     }
+    
+    /**
+     * Restarts tasks
+     *
+     * @return int
+     */
+    public function actionRestart()
+    {
+        Craft::log(Craft::t('Restarting tasks.'));
+
+        // run the tasks again for stuck tasks
+        $tasks = craft()->tasks->getAllTasks();
+        foreach ($tasks as $task)
+        {
+          craft()->tasks->rerunTaskById($task->id);
+        }
+
+        return 1;
+    }
 
     /**
      * Watch for tasks and run them.
