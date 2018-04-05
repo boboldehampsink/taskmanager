@@ -1,10 +1,15 @@
-Task Manager plugin for Craft CMS [![Build Status](https://travis-ci.org/boboldehampsink/taskmanager.svg?branch=develop)](https://travis-ci.org/boboldehampsink/taskmanager) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/boboldehampsink/taskmanager/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/boboldehampsink/taskmanager/?branch=develop) [![Code Coverage](https://scrutinizer-ci.com/g/boboldehampsink/taskmanager/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/boboldehampsink/taskmanager/?branch=develop) [![Latest Stable Version](https://poser.pugx.org/boboldehampsink/taskmanager/v/stable)](https://packagist.org/packages/boboldehampsink/taskmanager) [![Total Downloads](https://poser.pugx.org/boboldehampsink/taskmanager/downloads)](https://packagist.org/packages/boboldehampsink/taskmanager) [![Latest Unstable Version](https://poser.pugx.org/boboldehampsink/taskmanager/v/unstable)](https://packagist.org/packages/boboldehampsink/taskmanager) [![License](https://poser.pugx.org/boboldehampsink/taskmanager/license)](https://packagist.org/packages/boboldehampsink/taskmanager)
+DEPRECATED - Task Manager plugin for Craft CMS [![Build Status](https://travis-ci.org/boboldehampsink/taskmanager.svg?branch=develop)](https://travis-ci.org/boboldehampsink/taskmanager) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/boboldehampsink/taskmanager/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/boboldehampsink/taskmanager/?branch=develop) [![Code Coverage](https://scrutinizer-ci.com/g/boboldehampsink/taskmanager/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/boboldehampsink/taskmanager/?branch=develop) [![Latest Stable Version](https://poser.pugx.org/boboldehampsink/taskmanager/v/stable)](https://packagist.org/packages/boboldehampsink/taskmanager) [![Total Downloads](https://poser.pugx.org/boboldehampsink/taskmanager/downloads)](https://packagist.org/packages/boboldehampsink/taskmanager) [![Latest Unstable Version](https://poser.pugx.org/boboldehampsink/taskmanager/v/unstable)](https://packagist.org/packages/boboldehampsink/taskmanager) [![License](https://poser.pugx.org/boboldehampsink/taskmanager/license)](https://packagist.org/packages/boboldehampsink/taskmanager)
 =================
 
 Adds a "Task Manager" section to your CP to easily cancel or delete Craft Tasks.
 
 __Important__  
  - The plugin's folder should be named "taskmanager"
+ 
+Deprecated
+=================
+
+With the release of Craft 3 on 4-4-2018, this plugin has been deprecated. You can still use this with Craft 2 but you are encouraged to use (and develop) a Craft 3 version. At this moment, I have no plans to do so.
 
 Features
 =================
@@ -36,25 +41,25 @@ phpunit --bootstrap craft/app/tests/bootstrap.php --configuration craft/plugins/
 
 Changelog
 =================
-###0.4.3###
+### 0.4.3 ###
  - Added the ability to get pending tasks in Hirefire.io format
  - Recycle db connection
 
-###0.4.2###
+### 0.4.2 ###
  - Fixed bug with reading default config values
 
-###0.4.1###
+### 0.4.1 ###
  - Added the ability to control the watch interval via the `taskInterval` config setting
 
-###0.4.0###
+### 0.4.0 ###
  - Added the ability to run and watch for tasks via the command line.
 
-###0.3.1###
+### 0.3.1 ###
  - Updated the plugin for Craft 2.5
  - The hook "modifyTaskManagerAttributes" is now "defineAdditionalTaskManagerTableAttributes"
  - Added description and documentation url
 
-###0.3.0###
+### 0.3.0 ###
  - Added sources by type
  - Replaced action buttons by element actions
  - Added endpoint for rerunning all failed tasks
@@ -65,9 +70,9 @@ Changelog
  - Added "getTaskManagerTableAttributeHtml" hook
  - Added "modifyTaskManagerSortableAttributes"
 
-###0.2.0###
+### 0.2.0 ###
  - Added the ability to restart a task
  - Deleting a task is now more graceful
 
-###0.1.0###
+### 0.1.0 ###
  - Initial release
